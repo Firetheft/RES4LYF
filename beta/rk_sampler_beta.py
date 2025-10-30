@@ -245,8 +245,8 @@ def sample_rk_beta(
     default_dtype  = EO("default_dtype", torch.float64)
     
     extra_args     = {} if extra_args     is None else extra_args
-    model_device   = model.inner_model.inner_model.device #x.device
-    work_device    = 'cpu' if EO("work_device_cpu") else model_device
+    model_device   = comfy.model_management.get_torch_device() 
+    work_device    = model_device
 
     state_info     = {} if state_info     is None else state_info
     state_info_out = {} if state_info_out is None else state_info_out
